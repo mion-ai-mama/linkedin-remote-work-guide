@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIで人気動画を分析する方法｜コピペで使える3STEPガイド</title>
-<meta name="description" content="人気の動画をChatGPTに見せるだけで「なぜ伸びたのか」「次の企画」が分かる。AI初心者さんでもすぐ試せる3STEPガイドです。コピペで使えるプロンプト付き。">
+<title>AIを味方に探す｜海外在宅ワーク完全スタートガイド</title>
+<meta name="description" content="LinkedInで海外在宅ワークを探す方法から、求人の見極め・応募準備・Claude活用まで初心者向けに解説。">
 
 <!-- OGP（SNSでシェアされたときの表示設定） -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="AIで人気動画を分析する方法｜コピペで使える3STEPガイド">
-<meta property="og:description" content="人気の動画をChatGPTに見せるだけで「なぜ伸びたのか」「次の企画」が分かる。AI初心者さんでもすぐ試せる3STEPガイドです。">
-<meta property="og:image" content="https://mion-ai-mama.github.io/instagram-tokuten-template/assets/images/video-poster.jpg">
-<meta property="og:url" content="https://mion-ai-mama.github.io/instagram-tokuten-template/">
+<meta property="og:title" content="AIを味方に探す｜海外在宅ワーク完全スタートガイド">
+<meta property="og:description" content="LinkedInで海外在宅ワークを探す方法から、求人の見極め・応募準備・Claude活用まで初心者向けに解説。">
+<meta property="og:image" content="https://mion-ai-mama.github.io/linkedin-remote-work-guide/assets/images/ogp.png">
+<meta property="og:url" content="https://mion-ai-mama.github.io/linkedin-remote-work-guide/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#2b8ce6">
 
@@ -31,90 +31,77 @@
     <div class="hero__inner">
       <p class="hero__label">AI初心者さん向け</p>
       <h1 class="hero__title">
-        AIで人気動画を<br>分析する方法
+        AIを味方に探す<br>海外在宅ワーク完全スタートガイド
       </h1>
       <p class="hero__subtitle">
-        コピペで使える<br>3STEPガイド
+        LinkedInで仕事を探す方法から<br>案件の見極め・応募準備・Claude活用まで
       </p>
-      <p class="hero__desc">
-        人気の動画をChatGPTに見せると、<br>
-        「なぜ伸びたのか」や<br>
-        「次にどんな企画を作ればいいのか」を<br>
-        初心者にも分かりやすく整理してもらえます。
-      </p>
-      <a class="btn btn--primary btn--large" href="#step1" data-scroll>
-        3STEPを見てみる
+      <div class="hero__desc prose" id="hero-intro">
+        <p>「海外の仕事って、英語ができないと無理そう…」</p>
+        <p>「LinkedInって聞いたことはあるけど、使ったことがない」</p>
+        <p>そんな方でも大丈夫。</p>
+        <p>このガイドでは、<br>LinkedInで海外求人を探すところから、<br>AIを使って求人内容を確認し、<br>「自分にもできそうな仕事か？」<br>を判断するところまで、<br>初心者向けに順番に解説します。</p>
+        <p>さらに、<br>求人を探すだけではなく、<br>プロフィール作成・応募メッセージ作成・実際の仕事で使えるClaudeプロンプトまでまとめました。</p>
+      </div>
+      <a class="btn btn--primary btn--large" href="#guide-flow" data-scroll>
+        このガイドの流れを見てみる
       </a>
     </div>
   </section>
 
   <!-- ============================================================
-       実例動画セクション
+       「このガイドの流れ」目次
   ============================================================ -->
-  <section class="section" id="example-video" aria-labelledby="example-video-heading">
+  <nav class="guide-flow" id="guide-flow" aria-label="このガイドの流れ">
     <div class="section__inner reveal">
-      <h2 class="section__heading" id="example-video-heading">実際に作った動画はこちら</h2>
-      <div class="video-card">
-        <video
-          id="example-video-player"
-          class="video-card__player"
-          controls
-          preload="none"
-          playsinline
-          poster="assets/images/video-poster.jpg"
-          aria-label="AIで動画分析を行い制作した実例動画">
-          <source src="assets/videos/example.mp4" type="video/mp4">
-          <p class="video-card__fallback">
-            動画を読み込めませんでした。ブラウザや通信環境をご確認いただくか、時間をおいて再度お試しください。
-          </p>
-        </video>
-        <p class="video-card__caption">
-          この動画は、<br>
-          人気動画の構成や見せ方をAIで分析し、<br>
-          その結果を参考に作成した実例です。<br><br>
-          元の動画をそのまま真似するのではなく、<br>
-          分析したポイントを自分の企画に応用しています。
-        </p>
+      <p class="guide-flow__heading">このガイドの流れ</p>
+      <ol class="guide-flow__list" id="guide-flow-list">
+        <li><a href="#step1" data-scroll>STEP1　LinkedInって何？</a></li>
+        <li><a href="#step2" data-scroll>STEP2　LinkedInに登録しよう</a></li>
+        <li><a href="#step3" data-scroll>STEP3　海外在宅ワークを探してみよう</a></li>
+        <li><a href="#step4" data-scroll>STEP4　求人票をClaudeに読んでもらおう</a></li>
+        <li><a href="#step5" data-scroll>STEP5　「私にもできる仕事？」をAIに判断してもらう</a></li>
+        <li><a href="#step6" data-scroll>STEP6　LinkedInプロフィールもAIと一緒に作ろう</a></li>
+        <li><a href="#step7" data-scroll>STEP7　応募メッセージもClaudeに作ってもらおう</a></li>
+        <li><a href="#step8" data-scroll>STEP8　実際の仕事でもClaudeを活用する</a></li>
+        <li><a href="#checklist" data-scroll>STEP9　応募前チェックリスト</a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       このガイドでできること
+  ============================================================ -->
+  <section class="section section--soft" id="can-do" aria-labelledby="can-do-heading">
+    <div class="section__inner reveal">
+      <h2 class="section__heading" id="can-do-heading">このガイドでできること</h2>
+      <ul class="check-list" id="can-do-list">
+        <li>LinkedInの基本がわかる</li>
+        <li>日本語を活かせる仕事の探し方がわかる</li>
+        <li>海外求人の英語をAIで確認できる</li>
+        <li>自分に合う案件かAIに判断してもらえる</li>
+        <li>英文プロフィールをAIで作れる</li>
+        <li>応募文をAIで作れる</li>
+        <li>実際の仕事をAIでサポートしてもらえる</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       冒頭の注意書き
+  ============================================================ -->
+  <section class="section" id="disclaimer" aria-labelledby="disclaimer-heading">
+    <div class="section__inner reveal">
+      <div class="caution-box caution-box--soft" id="disclaimer-box">
+        <p>海外求人は案件によって、<br>英語力・経験・学歴・専門スキルなどの条件が異なります。</p>
+        <p>「日本語ができれば必ずできる仕事」というわけではありません。</p>
+        <p>このガイドでは、自分に合った案件かどうかをAIと一緒に確認しながら探す方法を紹介します。</p>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       3. メインプロンプト（実例動画の直後に表示）
-  ============================================================ -->
-  <section class="section section--soft" id="main-prompt" aria-labelledby="main-prompt-heading">
-    <div class="section__inner reveal">
-      <h2 class="section__heading" id="main-prompt-heading">この指示文をコピーして使ってください</h2>
-      <p class="section__desc">下の文章をコピーして、<br>スクショと一緒にChatGPTへ送ってください。</p>
-
-      <div class="prompt-box">
-        <pre class="prompt-box__text" id="main-prompt-text">添付したスクショは
-YouTubeで人気の動画です。
-
-以下を分析してください。
-
-・この動画が伸びた理由
-・ターゲット
-・冒頭3秒の工夫
-・構成
-・視聴維持率が高そうなポイント
-・この動画を参考にした新しい企画を10個考えてください。
-
-初心者にも分かるように解説してください。</pre>
-        <button
-          type="button"
-          class="btn btn--primary copy-btn"
-          data-copy-target="main-prompt-text"
-          aria-label="メインプロンプトの指示文をコピーする">
-          <span class="copy-btn__label">この指示文をコピーする</span>
-          <span class="copy-btn__done" role="status" aria-live="polite">コピーしました</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       4〜6. STEP（steps-container の中身は js/content.js の steps
+       STEP1〜8（steps-container の中身は js/content.js の steps
        配列から自動生成されます。ここにあるHTMLは、JavaScriptが
        読み込めなかった場合に表示される初期表示用です）
   ============================================================ -->
@@ -122,152 +109,69 @@ YouTubeで人気の動画です。
     <section class="section step" id="step1" aria-labelledby="step1-heading">
       <div class="section__inner reveal">
         <p class="step__number">STEP 1</p>
-        <h2 class="step__title" id="step1-heading">気になる人気動画を見つける</h2>
+        <h2 class="step__title" id="step1-heading">LinkedInって何？</h2>
         <div class="prose">
-          <p>YouTubeやInstagramで、次のような動画を探しましょう。</p>
-          <ul class="check-list">
-            <li>最後まで見てしまった動画</li>
-            <li>再生回数が多い動画</li>
-            <li>コメントや反応が多い動画</li>
-            <li>自分の発信テーマに近い動画</li>
-            <li>なぜか気になって何度も見た動画</li>
-          </ul>
-          <p>そのまま真似するのではなく、「なぜ気になったのか」を考える参考として選びましょう。</p>
+          <p>LinkedInは、仕事やキャリアに特化したビジネスSNSです。</p>
+          <p>日本国内だけでなく、海外企業の求人も掲載されています。</p>
+          <p>リモート求人で絞り込むことで、日本から応募できる仕事を探すこともできます。</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section section--soft step" id="step2" aria-labelledby="step2-heading">
-      <div class="section__inner reveal">
-        <p class="step__number">STEP 2</p>
-        <h2 class="step__title" id="step2-heading">動画のスクショを撮る</h2>
-        <div class="prose">
-          <p>動画の流れが分かるように、3〜5枚ほどスクショを撮ります。</p>
-          <ul class="check-list">
-            <li>動画のタイトルやサムネイル</li>
-            <li>冒頭の場面</li>
-            <li>内容が大きく動く場面</li>
-            <li>途中の重要な場面</li>
-            <li>最後のまとめや案内部分</li>
-          </ul>
-        </div>
-        <div class="note-box">
-          <p class="note-box__label">補足</p>
-          <p>YouTubeのURLだけでは分析できない場合があるため、スクショを送る方法がおすすめです。</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section step" id="step3" aria-labelledby="step3-heading">
-      <div class="section__inner reveal">
-        <p class="step__number">STEP 3</p>
-        <h2 class="step__title" id="step3-heading">スクショと指示文を<br>ChatGPTに送る</h2>
-        <div class="prose">
-          <p>ChatGPTを開いたら、<br>先ほど撮ったスクショを添付します。</p>
-          <p>そのあと、<br>このページにある指示文をコピーして送ってください。</p>
-          <p>難しい設定は必要ありません。</p>
-          <p>スクショを添付して、<br>指示文を貼り付けて送るだけです。</p>
+        <div class="image-placeholder">
+          <span class="image-placeholder__icon" aria-hidden="true">🖼</span>
+          <p>ここにLinkedInトップ画面の画像を追加</p>
         </div>
       </div>
     </section>
   </div>
 
   <!-- ============================================================
-       7. 結果をよくするコツ
+       STEP9 応募前チェックリスト
   ============================================================ -->
-  <section class="section" id="tips" aria-labelledby="tips-heading">
+  <section class="section section--soft" id="checklist" aria-labelledby="checklist-heading">
     <div class="section__inner reveal">
-      <h2 class="section__heading" id="tips-heading">さらに分かりやすい答えを<br>出してもらうコツ</h2>
-      <div class="card-grid">
-        <div class="card">
-          <span class="card__icon" aria-hidden="true">📝</span>
-          <h3 class="card__title">自分の目的を伝える</h3>
-          <p class="card__desc">「Instagramリールの企画に使いたい」など、何に使いたいのかを伝えると、より目的に合った答えが出やすくなります。</p>
-        </div>
-        <div class="card">
-          <span class="card__icon" aria-hidden="true">🙋</span>
-          <h3 class="card__title">誰向けかを伝える</h3>
-          <p class="card__desc">「40代・50代のAI初心者向け」など、届けたい相手を伝えると、企画の方向性が具体的になります。</p>
-        </div>
-        <div class="card">
-          <span class="card__icon" aria-hidden="true">💬</span>
-          <h3 class="card__title">難しい場合は聞き直す</h3>
-          <p class="card__desc">答えが難しいと感じたら、「もっと簡単な言葉で説明してください」と追加で伝えて大丈夫です。</p>
-        </div>
+      <p class="step__number">STEP 9</p>
+      <h2 class="step__title" id="checklist-heading">応募前チェックリスト</h2>
+      <p class="section__desc" id="checklist-desc">タップするとチェックが入ります。あとで読み返すときの確認用メモとしてお使いください。</p>
+      <ul class="checklist" id="checklist-list">
+        <li class="checklist-item">仕事内容を理解できた</li>
+        <li class="checklist-item">必須条件を確認した</li>
+        <li class="checklist-item">英語力の条件を確認した</li>
+        <li class="checklist-item">報酬を確認した</li>
+        <li class="checklist-item">支払方法を確認した</li>
+        <li class="checklist-item">AI利用ルールを確認した</li>
+        <li class="checklist-item">企業名を確認した</li>
+        <li class="checklist-item">採用担当者を確認した</li>
+        <li class="checklist-item">不自然な外部サイト誘導がない</li>
+        <li class="checklist-item">先にお金を払うよう要求されていない</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       最後のまとめ
+  ============================================================ -->
+  <section class="section" id="final-summary" aria-labelledby="final-summary-heading">
+    <div class="section__inner reveal">
+      <h2 class="section__heading" id="final-summary-heading">まず今日やること</h2>
+      <p class="section__desc" id="final-summary-intro">全部を一気にやる必要はありません。まずは、</p>
+      <ol class="summary-list" id="final-summary-flow">
+        <li><span class="summary-list__number">1</span>LinkedInを開く</li>
+        <li><span class="summary-list__number">2</span>「Japanese Writer」と検索</li>
+        <li><span class="summary-list__number">3</span>Remoteで絞る</li>
+        <li><span class="summary-list__number">4</span>気になる求人を1つClaudeに見せる</li>
+      </ol>
+      <div class="prose" id="final-summary-body">
+        <p id="final-summary-end">ここまでやってみてください。</p>
+        <p>海外求人というだけで、<br>「私には無理」<br>と思っていた人も、<br>AIを使うことで、<br>探す・読む・比較するという最初のハードルはかなり下げられます。</p>
+        <p>大切なのは、<br>AIに全部やってもらうことではなく、<br>AIを使って自分の選択肢を増やすこと。</p>
+        <p>あなたに合う働き方を探す選択肢のひとつとして、<br>LinkedInもぜひ覗いてみてください。</p>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       8. 追加で使える質問5選
+       最後の案内（CTA）
   ============================================================ -->
-  <section class="section section--soft" id="extra-questions" aria-labelledby="extra-questions-heading">
-    <div class="section__inner reveal">
-      <h2 class="section__heading" id="extra-questions-heading">もっと深く分析したいときの<br>追加質問5選</h2>
-      <p class="section__desc">最初の分析結果を見たあと、<br>気になる質問を追加で送ってみてください。</p>
-
-      <div class="question-list" id="extra-questions-list">
-        <div class="question-card">
-          <pre class="question-card__text" id="question-1">この動画が伸びた一番大きな理由を、
-初心者にも分かるように3つ教えてください。</pre>
-          <button type="button" class="btn btn--outline copy-btn" data-copy-target="question-1" aria-label="追加質問1をコピーする">
-            <span class="copy-btn__label">コピーする</span>
-            <span class="copy-btn__done" role="status" aria-live="polite">コピーしました</span>
-          </button>
-        </div>
-        <div class="question-card">
-          <pre class="question-card__text" id="question-2">この動画の内容を、
-40代・50代の初心者向けに変えるとしたら、
-どのような企画になりますか？</pre>
-          <button type="button" class="btn btn--outline copy-btn" data-copy-target="question-2" aria-label="追加質問2をコピーする">
-            <span class="copy-btn__label">コピーする</span>
-            <span class="copy-btn__done" role="status" aria-live="polite">コピーしました</span>
-          </button>
-        </div>
-        <div class="question-card">
-          <pre class="question-card__text" id="question-3">この動画をInstagramリールにする場合、
-30秒以内の構成を考えてください。</pre>
-          <button type="button" class="btn btn--outline copy-btn" data-copy-target="question-3" aria-label="追加質問3をコピーする">
-            <span class="copy-btn__label">コピーする</span>
-            <span class="copy-btn__done" role="status" aria-live="polite">コピーしました</span>
-          </button>
-        </div>
-        <div class="question-card">
-          <pre class="question-card__text" id="question-4">このテーマを参考にしながら、
-内容が重ならない新しい企画を10個考えてください。</pre>
-          <button type="button" class="btn btn--outline copy-btn" data-copy-target="question-4" aria-label="追加質問4をコピーする">
-            <span class="copy-btn__label">コピーする</span>
-            <span class="copy-btn__done" role="status" aria-live="polite">コピーしました</span>
-          </button>
-        </div>
-        <div class="question-card">
-          <pre class="question-card__text" id="question-5">この動画の良い部分と、
-そのまま真似しない方がよい部分を教えてください。</pre>
-          <button type="button" class="btn btn--outline copy-btn" data-copy-target="question-5" aria-label="追加質問5をコピーする">
-            <span class="copy-btn__label">コピーする</span>
-            <span class="copy-btn__done" role="status" aria-live="polite">コピーしました</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       9. 注意点
-  ============================================================ -->
-  <section class="section" id="caution" aria-labelledby="caution-heading">
-    <div class="section__inner reveal">
-      <h2 class="section__heading" id="caution-heading">人気動画を参考にするときの注意点</h2>
-      <div class="prose">
-        <p>参考にするのは、テーマの見せ方や構成、伝え方のヒントです。<br>文章・画像・動画をそのまま使うのは避け、自分らしい企画に変えていきましょう。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       10. 最後の案内（CTA）
-  ============================================================ -->
-  <section class="section" id="cta" aria-labelledby="cta-heading">
+  <section class="section section--soft" id="cta" aria-labelledby="cta-heading">
     <div class="section__inner reveal">
       <div class="cta-card">
         <h2 class="cta-card__heading" id="cta-heading">AIをもっと仕事や暮らしに<br>活かしてみたい方へ</h2>
@@ -281,8 +185,8 @@ YouTubeで人気の動画です。
             も無料でご用意しています。
           </p>
         </div>
-        <a class="cta-card__banner-link" id="cta-button" href="https://sub.aione.co.jp/line/open/ErxG3f10mmcK?mtid=8LTecV7UlNz5" target="_blank" rel="noopener" aria-label="AIマネタイズの教科書を受け取る">
-          <img src="assets/images/cta-banner.png" alt="無料プレゼント AIマネタイズ教科書。AIで働き方の選択肢を広げたい方へ。LINE登録はこちら" class="cta-card__banner-img">
+        <a class="btn btn--primary btn--large" id="cta-button" href="https://example.com/" target="_blank" rel="noopener" aria-label="AIマネタイズの教科書を受け取る">
+          AIマネタイズの教科書を受け取る
         </a>
       </div>
     </div>
@@ -291,11 +195,14 @@ YouTubeで人気の動画です。
 </main>
 
 <!-- ============================================================
-     11. フッター
+     フッター
 ============================================================ -->
 <footer class="footer">
   <p>© MION</p>
-  <p>このページの内容の無断転載・複製はご遠慮ください。</p>
+  <p>※本ページは求人への応募・採用・収入を保証するものではありません。</p>
+  <p>※求人条件や報酬、募集状況は変更される場合があります。</p>
+  <p>※応募前に必ず各求人の最新情報・契約条件をご自身で確認してください。</p>
+  <p>※AIの利用可否は案件ごとに異なります。業務で利用する場合はクライアントの規約・契約条件を確認してください。</p>
 </footer>
 
 <script src="js/content.js"></script>

@@ -1,6 +1,6 @@
 /**
  * ============================================================
- * script.js — ページの動き（コピー機能・アニメーションなど）
+ * script.js — ページの動き（コピー機能・チェックリスト保存など）
  * ============================================================
  * このファイルは基本的に編集不要です。
  * 文章を変更したい場合は js/content.js を編集してください。
@@ -12,6 +12,8 @@
 
   /* ------------------------------------------------------------
      文字のエスケープ（安全にHTMLへ差し込むための処理）
+     プロンプト・検索キーワードなど「そのままコピーされる文章」は
+     必ずこの関数を通してから表示します。
   ------------------------------------------------------------ */
   function escapeHtml(str) {
     return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -19,9 +21,6 @@
 
   /* ------------------------------------------------------------
      SEO・OGP・favicon の反映
-     ※ 検索エンジンやSNSのクローラーはJavaScriptを実行しない場合があるため、
-     　 description / OGP画像などは index.html の <head> 内も
-     　 あわせて書き換えることをおすすめします（README参照）。
   ------------------------------------------------------------ */
   function applyMeta(m) {
     if (!m) return;
@@ -65,57 +64,107 @@
     root.querySelector(".hero__label").textContent = c.label;
     root.querySelector(".hero__title").innerHTML = `${c.titleLine1}<br>${c.titleLine2}`;
     root.querySelector(".hero__subtitle").innerHTML = `${c.subtitleLine1}<br>${c.subtitleLine2}`;
-    root.querySelector(".hero__desc").innerHTML = c.description;
+    const introRoot = document.getElementById("hero-intro");
+    if (introRoot) {
+      introRoot.innerHTML = (c.introParagraphs || []).map((p) => `<p>${p}</p>`).join("");
+    }
     const btn = root.querySelector(".btn");
     btn.textContent = c.buttonText;
     btn.setAttribute("href", "#" + c.buttonScrollTargetId);
   }
 
   /* ------------------------------------------------------------
-     実例動画
+     「このガイドの流れ」目次（メニューバーではなく単純なリンク一覧）
   ------------------------------------------------------------ */
-  function renderExampleVideo(c) {
-    const root = document.getElementById("example-video");
+  function renderGuideFlow(c) {
+    const root = document.getElementById("guide-flow");
     if (!root || !c) return;
-
-    root.querySelector(".section__heading").innerHTML = c.heading;
-    const card = root.querySelector(".video-card");
-
-    let mediaHtml;
-    if (c.mode === "youtube" && c.youtube && c.youtube.embedUrl) {
-      mediaHtml = `
-        <div class="video-card__embed-wrap">
-          <iframe
-            src="${c.youtube.embedUrl}"
-            title="実際に作った動画"
-            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"></iframe>
-        </div>`;
-    } else {
-      const poster = c.local && c.local.poster ? c.local.poster : "";
-      const src = c.local && c.local.src ? c.local.src : "";
-      mediaHtml = `
-        <video
-          class="video-card__player"
-          controls
-          preload="none"
-          playsinline
-          poster="${poster}"
-          aria-label="実際に作った動画">
-          <source src="${src}" type="video/mp4">
-          <p class="video-card__fallback">${c.fallbackText || ""}</p>
-        </video>`;
-    }
-
-    card.innerHTML = mediaHtml + `<p class="video-card__caption">${c.caption}</p>`;
+    root.querySelector(".guide-flow__heading").textContent = c.heading;
+    const list = document.getElementById("guide-flow-list");
+    list.innerHTML = c.items
+      .map((item) => `<li><a href="#${item.target}" data-scroll>${escapeHtml(item.label)}</a></li>`)
+      .join("");
   }
 
   /* ------------------------------------------------------------
-     4〜6. STEP
+     このガイドでできること
+  ------------------------------------------------------------ */
+  function renderCanDo(c) {
+    const root = document.getElementById("can-do");
+    if (!root || !c) return;
+    root.querySelector(".section__heading").textContent = c.heading;
+    const list = document.getElementById("can-do-list");
+    list.innerHTML = c.items.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+  }
+
+  /* ------------------------------------------------------------
+     冒頭の注意書き（目立ちすぎない注意ボックス）
+  ------------------------------------------------------------ */
+  function renderDisclaimer(c) {
+    const root = document.getElementById("disclaimer-box");
+    if (!root || !c) return;
+    root.innerHTML = (c.paragraphs || []).map((p) => `<p>${p}</p>`).join("");
+  }
+
+  /* ------------------------------------------------------------
+     STEP内の部品（画像枠・検索キーワード・プロンプト・注意ボックス）
+  ------------------------------------------------------------ */
+  function renderImagePlaceholder(image) {
+    if (!image) return "";
+    if (image.src) {
+      return `<img src="${image.src}" alt="${escapeHtml(image.alt || "")}" class="step-image">`;
+    }
+    return `
+      <div class="image-placeholder">
+        <span class="image-placeholder__icon" aria-hidden="true">🖼</span>
+        <p>${escapeHtml(image.placeholder || "画像を追加してください")}</p>
+      </div>`;
+  }
+
+  function renderKeywordList(kw, stepIndex) {
+    if (!kw) return "";
+    const itemsHtml = kw.items
+      .map((word, j) => {
+        const id = `keyword-${stepIndex}-${j}`;
+        return `
+        <li class="keyword-item">
+          <span class="keyword-item__text" id="${id}">${escapeHtml(word)}</span>
+          <button type="button" class="keyword-item__copy copy-btn" data-copy-target="${id}" aria-label="${escapeHtml(word)}をコピーする">
+            <span class="copy-btn__label">コピー</span>
+            <span class="copy-btn__done" role="status" aria-live="polite">コピーしました</span>
+          </button>
+        </li>`;
+      })
+      .join("");
+    return `
+      <div class="keyword-list">
+        <p class="keyword-list__heading">${escapeHtml(kw.heading)}</p>
+        <ul class="keyword-list__items">${itemsHtml}</ul>
+      </div>`;
+  }
+
+  function renderPromptBox(prompt) {
+    return `
+      <div class="prompt-box">
+        <p class="prompt-box__title">${escapeHtml(prompt.title)}</p>
+        <pre class="prompt-box__text" id="${prompt.id}">${escapeHtml(prompt.text)}</pre>
+        <button type="button" class="btn btn--primary copy-btn" data-copy-target="${prompt.id}" aria-label="${escapeHtml(prompt.title)}をコピーする">
+          <span class="copy-btn__label">コピーする</span>
+          <span class="copy-btn__done" role="status" aria-live="polite">コピーしました ✓</span>
+        </button>
+      </div>`;
+  }
+
+  function renderCautionBox(box) {
+    if (!box) return "";
+    const variantClass = box.variant === "strong" ? " caution-box--strong" : " caution-box--soft";
+    return `<div class="caution-box${variantClass}"><p>${box.text}</p></div>`;
+  }
+
+  /* ------------------------------------------------------------
+     STEP1〜8
      steps 配列の数だけ、STEPセクションをその場で組み立てます。
-     （HTML側は steps-container という空の入れ物があるだけなので、
-     　content.js の steps を増減させれば、STEPの数も自由に変わります）
+     content.js の steps を増減させれば、STEPの数も自由に変わります。
   ------------------------------------------------------------ */
   function renderSteps(steps) {
     const container = document.getElementById("steps-container");
@@ -132,8 +181,12 @@
         }
         prose += (step.afterParagraphs || []).map((p) => `<p>${p}</p>`).join("");
 
+        const imageHtml = renderImagePlaceholder(step.image);
+        const keywordHtml = renderKeywordList(step.keywordList, i);
+        const cautionHtml = renderCautionBox(step.cautionBox);
+        const promptsHtml = (step.prompts || []).map(renderPromptBox).join("");
         const noteHtml = step.note
-          ? `<div class="note-box"><p class="note-box__label">${step.note.label}</p><p>${step.note.text}</p></div>`
+          ? `<div class="note-box"><p class="note-box__label">${escapeHtml(step.note.label)}</p><p>${step.note.text}</p></div>`
           : "";
 
         return `
@@ -142,6 +195,10 @@
             <p class="step__number">${step.number}</p>
             <h2 class="step__title" id="${id}-heading">${step.title}</h2>
             <div class="prose">${prose}</div>
+            ${imageHtml}
+            ${keywordHtml}
+            ${cautionHtml}
+            ${promptsHtml}
             ${noteHtml}
           </div>
         </section>`;
@@ -150,79 +207,89 @@
   }
 
   /* ------------------------------------------------------------
-     3. メインプロンプト
+     STEP9 応募前チェックリスト
+     状態は localStorage に保存し、ページ再読み込みでも保持します。
+     保存するのはチェックのON/OFF（true/false）のみです。
   ------------------------------------------------------------ */
-  function renderMainPrompt(c) {
-    const root = document.getElementById("main-prompt");
-    if (!root || !c) return;
-    root.querySelector(".section__heading").innerHTML = c.heading;
-    root.querySelector(".section__desc").innerHTML = c.description;
-    const textEl = document.getElementById("main-prompt-text");
-    textEl.textContent = c.promptText;
-    const btn = root.querySelector(".copy-btn");
-    btn.setAttribute("data-copy-target", "main-prompt-text");
-    btn.querySelector(".copy-btn__label").textContent = c.buttonText;
-    btn.querySelector(".copy-btn__done").textContent = c.copiedText;
+  const CHECKLIST_STORAGE_KEY = "linkedin-guide-checklist-v1";
+
+  function loadChecklistState(len) {
+    try {
+      const raw = window.localStorage.getItem(CHECKLIST_STORAGE_KEY);
+      const parsed = raw ? JSON.parse(raw) : [];
+      const arr = Array.isArray(parsed) ? parsed : [];
+      return Array.from({ length: len }, (_, i) => !!arr[i]);
+    } catch (e) {
+      // プライベートブラウジング等で localStorage が使えない場合は、保存なしで続行します
+      return new Array(len).fill(false);
+    }
   }
 
-  /* ------------------------------------------------------------
-     7. 結果をよくするコツ
-  ------------------------------------------------------------ */
-  const TIP_ICONS = ["📝", "🙋", "💬"];
-
-  function renderTips(c) {
-    const root = document.getElementById("tips");
-    if (!root || !c) return;
-    root.querySelector(".section__heading").innerHTML = c.heading;
-    const grid = root.querySelector(".card-grid");
-    grid.innerHTML = c.cards
-      .map(
-        (card, i) => `
-      <div class="card">
-        <span class="card__icon" aria-hidden="true">${TIP_ICONS[i] || "💡"}</span>
-        <h3 class="card__title">${card.title}</h3>
-        <p class="card__desc">${card.description}</p>
-      </div>`
-      )
-      .join("");
+  function saveChecklistState(state) {
+    try {
+      window.localStorage.setItem(CHECKLIST_STORAGE_KEY, JSON.stringify(state));
+    } catch (e) {
+      // 保存できなくてもページの利用自体は続けられるようにします
+    }
   }
 
-  /* ------------------------------------------------------------
-     8. 追加で使える質問5選
-  ------------------------------------------------------------ */
-  function renderExtraQuestions(c) {
-    const root = document.getElementById("extra-questions");
+  function renderChecklist(c) {
+    const root = document.getElementById("checklist");
     if (!root || !c) return;
-    root.querySelector(".section__heading").innerHTML = c.heading;
-    root.querySelector(".section__desc").innerHTML = c.description;
-    const list = document.getElementById("extra-questions-list");
-    list.innerHTML = c.questions
-      .map((q, i) => {
-        const id = "question-" + (i + 1);
+    root.querySelector(".step__number").textContent = c.number;
+    root.querySelector(".step__title").textContent = c.heading;
+    const descEl = document.getElementById("checklist-desc");
+    if (descEl) descEl.textContent = c.description;
+
+    const state = loadChecklistState(c.items.length);
+    const list = document.getElementById("checklist-list");
+    list.innerHTML = c.items
+      .map((item, i) => {
+        const id = `checklist-item-${i}`;
         return `
-        <div class="question-card">
-          <pre class="question-card__text" id="${id}">${escapeHtml(q)}</pre>
-          <button type="button" class="btn btn--outline copy-btn" data-copy-target="${id}" aria-label="追加質問${i + 1}をコピーする">
-            <span class="copy-btn__label">${c.buttonText}</span>
-            <span class="copy-btn__done" role="status" aria-live="polite">${c.copiedText}</span>
-          </button>
-        </div>`;
+        <li class="checklist-item">
+          <label class="checklist-item__label" for="${id}">
+            <input type="checkbox" id="${id}" class="checklist-item__input" data-index="${i}" ${
+          state[i] ? "checked" : ""
+        }>
+            <span class="checklist-item__box" aria-hidden="true"></span>
+            <span class="checklist-item__text">${escapeHtml(item)}</span>
+          </label>
+        </li>`;
       })
       .join("");
+
+    list.addEventListener("change", function (e) {
+      const input = e.target.closest(".checklist-item__input");
+      if (!input) return;
+      const idx = Number(input.getAttribute("data-index"));
+      const current = loadChecklistState(c.items.length);
+      current[idx] = input.checked;
+      saveChecklistState(current);
+    });
   }
 
   /* ------------------------------------------------------------
-     9. 注意点
+     最後のまとめ
   ------------------------------------------------------------ */
-  function renderCaution(c) {
-    const root = document.getElementById("caution");
+  function renderFinalSummary(c) {
+    const root = document.getElementById("final-summary");
     if (!root || !c) return;
-    root.querySelector(".section__heading").innerHTML = c.heading;
-    root.querySelector(".prose").innerHTML = c.paragraphs.map((p) => `<p>${p}</p>`).join("");
+    root.querySelector(".section__heading").textContent = c.heading;
+    const introEl = document.getElementById("final-summary-intro");
+    if (introEl) introEl.textContent = c.intro;
+
+    const flowList = document.getElementById("final-summary-flow");
+    flowList.innerHTML = c.flow
+      .map((item, i) => `<li><span class="summary-list__number">${i + 1}</span>${escapeHtml(item)}</li>`)
+      .join("");
+
+    const body = document.getElementById("final-summary-body");
+    body.innerHTML = `<p>${c.flowEnd}</p>` + (c.paragraphs || []).map((p) => `<p>${p}</p>`).join("");
   }
 
   /* ------------------------------------------------------------
-     10. 最後の案内（CTA）
+     最後の案内（CTA）
   ------------------------------------------------------------ */
   function renderCta(c) {
     const root = document.getElementById("cta");
@@ -259,12 +326,13 @@
   }
 
   /* ------------------------------------------------------------
-     11. フッター
+     フッター
   ------------------------------------------------------------ */
   function renderFooter(c) {
     const root = document.querySelector(".footer");
     if (!root || !c) return;
-    root.innerHTML = `<p>${c.copyright}</p><p>${c.notice}</p>`;
+    const noticesHtml = (c.notices || []).map((n) => `<p>${escapeHtml(n)}</p>`).join("");
+    root.innerHTML = `<p>${escapeHtml(c.copyright)}</p>${noticesHtml}`;
   }
 
   /* ------------------------------------------------------------
@@ -346,22 +414,23 @@
       try {
         applyMeta(CONTENT.meta);
         renderHero(CONTENT.hero);
-        renderExampleVideo(CONTENT.exampleVideo);
-        renderMainPrompt(CONTENT.mainPrompt);
+        renderGuideFlow(CONTENT.guideFlow);
+        renderCanDo(CONTENT.canDo);
+        renderDisclaimer(CONTENT.disclaimer);
         renderSteps(CONTENT.steps);
-        renderTips(CONTENT.tips);
-        renderExtraQuestions(CONTENT.extraQuestions);
-        renderCaution(CONTENT.caution);
+        renderChecklist(CONTENT.checklist);
+        renderFinalSummary(CONTENT.finalSummary);
         renderCta(CONTENT.cta);
         renderFooter(CONTENT.footer);
 
         const s = CONTENT.sections || {};
-        toggleSection("example-video", s.video !== false);
-        toggleSection("main-prompt", s.mainPrompt !== false);
+        toggleSection("guide-flow", s.guideFlow !== false);
+        toggleSection("can-do", s.canDo !== false);
+        toggleSection("disclaimer", s.disclaimer !== false);
         toggleSection("steps-container", s.steps !== false);
-        toggleSection("tips", s.tips !== false);
-        toggleSection("extra-questions", s.extraQuestions !== false);
-        toggleSection("caution", s.caution !== false);
+        toggleSection("checklist", s.checklist !== false);
+        toggleSection("final-summary", s.finalSummary !== false);
+        toggleSection("cta", s.cta !== false);
       } catch (err) {
         // content.js の書き方に誤りがある場合はここに来ます。
         // index.html に書かれた初期文章がそのまま表示されるので、ページは壊れません。
