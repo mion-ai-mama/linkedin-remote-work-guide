@@ -66,7 +66,8 @@
 ## 未完了・ユーザー対応が必要な項目
 
 - [ ] `js/content.js` の `cta.buttonUrl` を実際のLINE登録URLに差し替える
-- [ ] STEP1・STEP2で使用するLinkedIn画面のスクリーンショット画像を`assets/images/`に配置する
+- [x] STEP1・STEP2で使用するLinkedIn画面のスクリーンショット画像を配置する
+      （`assets/images/linkedin-top.png`・`linkedin-signup.png`、ユーザーが手動撮影・提供）
 - [ ] OGP画像を`assets/images/`に配置する（`content.js`の`meta.ogpImage`で管理）
 - [ ] GitHub Pagesの公開設定（Agent 12で実施）
 - [ ] リポジトリを「テンプレートリポジトリ」に設定するかは任意（本リポジトリは前作テンプレートの
