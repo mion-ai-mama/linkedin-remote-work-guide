@@ -67,9 +67,9 @@ hero: {
 
 - [x] `content.js` の `cta.buttonUrl` を実際のLINE登録URLに変更する（設定済み）
 - [x] STEP1・STEP2の画像を実際のLinkedIn画面のスクリーンショットに設定する（設定済み）
-- [ ] `content.js` の `meta.ogpImage` に、実際のOGP画像（SNSシェア用の画像）を設定する
+- [x] `content.js` の `meta.ogpImage` にOGP画像を設定する（`cta-banner.png`を流用、設定済み）
 
-進捗は `docs/SCOPE_PROGRESS.md` にも記録されています。
+公開前にやることはこれで全て完了しています。進捗は `docs/SCOPE_PROGRESS.md` にも記録されています。
 
 ---
 

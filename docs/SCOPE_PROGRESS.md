@@ -69,7 +69,7 @@
       （前作と同じ導線: `assets/images/cta-banner.png` ＋ 本番LINE URL）
 - [x] STEP1・STEP2で使用するLinkedIn画面のスクリーンショット画像を配置する
       （`assets/images/linkedin-top.png`・`linkedin-signup.png`、ユーザーが手動撮影・提供）
-- [ ] OGP画像を`assets/images/`に配置する（`content.js`の`meta.ogpImage`で管理）
+- [x] OGP画像を設定する（ユーザー指定なしのため`assets/images/cta-banner.png`を流用）
 - [ ] GitHub Pagesの公開設定（Agent 12で実施）
 - [ ] リポジトリを「テンプレートリポジトリ」に設定するかは任意（本リポジトリは前作テンプレートの
       2件目インスタンスのため、必須ではない）

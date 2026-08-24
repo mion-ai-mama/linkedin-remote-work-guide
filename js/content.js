@@ -22,7 +22,7 @@ const CONTENT = {
     description:
       "LinkedInで海外在宅ワークを探す方法から、求人の見極め・応募準備・Claude活用まで初心者向けに解説。",
     // og:image は絶対URL（https://から始まるURL）である必要があります。
-    ogpImage: "https://mion-ai-mama.github.io/linkedin-remote-work-guide/assets/images/ogp.png",
+    ogpImage: "https://mion-ai-mama.github.io/linkedin-remote-work-guide/assets/images/cta-banner.png",
     siteUrl: "https://mion-ai-mama.github.io/linkedin-remote-work-guide/",
     faviconPath: "assets/favicon/favicon.svg",
   },
