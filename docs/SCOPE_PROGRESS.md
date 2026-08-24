@@ -32,7 +32,7 @@
 | 9 | フロントエンド実装(API統合) | Agent 9 | スキップ(API連携なし) |
 | 10 | E2Eテスト | Agent 10 | [x](ブラウザでコピー機能・検索キーワードコピー・チェックリスト保存/再読込・横スクロールなしを確認) |
 | 11 | ローカル動作確認 | Agent 11 | [x](python3 -m http.serverで表示確認、コンソールエラーなし) |
-| 12 | デプロイ | Agent 12 | [ ](GitHub Pages公開設定はユーザー承認後に実施) |
+| 12 | デプロイ | Agent 12 | [x](ユーザー承認のうえGitHub Pagesを公開。公開確認済み: https://mion-ai-mama.github.io/linkedin-remote-work-guide/) |
 
 ## ページ / ファイル管理表
 
@@ -70,7 +70,7 @@
 - [x] STEP1・STEP2で使用するLinkedIn画面のスクリーンショット画像を配置する
       （`assets/images/linkedin-top.png`・`linkedin-signup.png`、ユーザーが手動撮影・提供）
 - [x] OGP画像を設定する（ユーザー指定なしのため`assets/images/cta-banner.png`を流用）
-- [ ] GitHub Pagesの公開設定（Agent 12で実施）
+- [x] GitHub Pagesの公開設定（ユーザー承認のうえ実施。公開URL: https://mion-ai-mama.github.io/linkedin-remote-work-guide/）
 - [ ] リポジトリを「テンプレートリポジトリ」に設定するかは任意（本リポジトリは前作テンプレートの
       2件目インスタンスのため、必須ではない）
 
