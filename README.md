@@ -85,6 +85,7 @@ steps: [
     paragraphs: ["（本文の段落1）", "（本文の段落2）"],
     list: ["（箇条書き1）", "（箇条書き2）"],
     afterParagraphs: [],
+    link: null, // 外部リンクボタンが必要なら { text: "（ボタン文言）", url: "https://…" }
     image: { placeholder: "ここに◯◯の画像を追加", src: null, alt: "（画像の説明）" },
     note: null, // 補足ボックスが必要なら { label: "補足", text: "（補足文）" }
     keywordList: null, // 検索キーワードのコピー一覧が必要なら { heading: "…", items: ["…", "…"] }

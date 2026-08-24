@@ -181,6 +181,11 @@
         }
         prose += (step.afterParagraphs || []).map((p) => `<p>${p}</p>`).join("");
 
+        const linkHtml = step.link
+          ? `<div class="step__link-wrap"><a class="btn btn--outline" href="${step.link.url}" target="_blank" rel="noopener">${escapeHtml(
+              step.link.text
+            )}</a></div>`
+          : "";
         const imageHtml = renderImagePlaceholder(step.image);
         const keywordHtml = renderKeywordList(step.keywordList, i);
         const cautionHtml = renderCautionBox(step.cautionBox);
@@ -195,6 +200,7 @@
             <p class="step__number">${step.number}</p>
             <h2 class="step__title" id="${id}-heading">${step.title}</h2>
             <div class="prose">${prose}</div>
+            ${linkHtml}
             ${imageHtml}
             ${keywordHtml}
             ${cautionHtml}
