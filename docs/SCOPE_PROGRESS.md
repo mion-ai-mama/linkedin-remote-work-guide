@@ -61,11 +61,12 @@
 | サービス | アカウント | 備考 |
 |---------|-----------|------|
 | GitHub | [x] mion-ai-mama | リポジトリ作成・clone済み（本セッションで実施） |
-| LINE公式アカウント | [x] 既存の登録導線あり | CTAリンクは仮URL(`https://example.com/`)。本番URLへの差し替えが必要 |
+| LINE公式アカウント | [x] 既存の登録導線あり | 前作「AIで人気動画を分析する方法」と同じ『AIマネタイズの教科書』導線をそのまま流用 |
 
 ## 未完了・ユーザー対応が必要な項目
 
-- [ ] `js/content.js` の `cta.buttonUrl` を実際のLINE登録URLに差し替える
+- [x] `js/content.js` の `cta.buttonUrl` を実際のLINE登録URLに差し替える
+      （前作と同じ導線: `assets/images/cta-banner.png` ＋ 本番LINE URL）
 - [x] STEP1・STEP2で使用するLinkedIn画面のスクリーンショット画像を配置する
       （`assets/images/linkedin-top.png`・`linkedin-signup.png`、ユーザーが手動撮影・提供）
 - [ ] OGP画像を`assets/images/`に配置する（`content.js`の`meta.ogpImage`で管理）

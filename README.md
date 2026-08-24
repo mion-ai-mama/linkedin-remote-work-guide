@@ -65,11 +65,8 @@ hero: {
 
 ## 3. 公開前に必ずやること
 
-このページは、以下の3点が「仮の状態」のまま作られています。公開前に必ず差し替えてください。
-
-- [ ] `content.js` の `cta.buttonUrl`（`"https://example.com/"`）を、実際のLINE登録URLに変更する
-- [ ] STEP1・STEP2にある画像プレースホルダー（「ここに◯◯の画像を追加」）に、実際のLinkedIn画面の
-      スクリーンショットを設定する → [7章](#7-画像を追加する方法)
+- [x] `content.js` の `cta.buttonUrl` を実際のLINE登録URLに変更する（設定済み）
+- [x] STEP1・STEP2の画像を実際のLinkedIn画面のスクリーンショットに設定する（設定済み）
 - [ ] `content.js` の `meta.ogpImage` に、実際のOGP画像（SNSシェア用の画像）を設定する
 
 進捗は `docs/SCOPE_PROGRESS.md` にも記録されています。

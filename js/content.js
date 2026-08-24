@@ -462,9 +462,8 @@ Remote work
     highlightText: "『AIマネタイズの教科書』",
     afterHighlight: "も無料でご用意しています。",
     buttonText: "AIマネタイズの教科書を受け取る",
-    // ▼▼ 本番のLINE登録URLが決まったら、ここを差し替えてください ▼▼
-    buttonUrl: "https://example.com/",
-    bannerImage: null,
+    buttonUrl: "https://sub.aione.co.jp/line/open/ErxG3f10mmcK?mtid=8LTecV7UlNz5",
+    bannerImage: "assets/images/cta-banner.png",
     bannerAlt: "無料プレゼント AIマネタイズ教科書。AIで働き方の選択肢を広げたい方へ。LINE登録はこちら",
   },
 
