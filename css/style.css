@@ -6,16 +6,16 @@
    ============================================================ */
 
 :root {
-  /* 色 */
-  --color-bg: #ffffff;
-  --color-bg-soft: #f4faff;
-  --color-primary: #2b8ce6;
-  --color-primary-dark: #1b6fc0;
-  --color-accent-light: #d9f0ff;
-  --color-text: #223244;
-  --color-text-muted: #5b6b7c;
-  --color-border: #e3edf5;
-  --color-card-shadow: rgba(43, 140, 230, 0.12);
+  /* 色（大人ピンク×アイボリー系） */
+  --color-bg: #fdfaf7;
+  --color-bg-soft: #fbeeec;
+  --color-primary: #cf8a92;
+  --color-primary-dark: #b16d76;
+  --color-accent-light: #f7dfe0;
+  --color-text: #3d322f;
+  --color-text-muted: #8a7972;
+  --color-border: #f0dfdc;
+  --color-card-shadow: rgba(207, 138, 146, 0.16);
 
   /* 形 */
   --radius-lg: 20px;
